@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>eight.ing3.esipe.fr</groupId>
+	<artifactId>market-flow-api</artifactId>
+	<packaging>jar</packaging>
+	<name>market-flow-api</name>
+	<description>Market Flow API</description>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<parent>
+		<artifactId>eight-mock</artifactId>
+		<groupId>eight.ing3.esipe.fr</groupId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+
+
+	<dependencies>
+
+
+	</dependencies>
+
+</project>
