@@ -1,0 +1,113 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Market Flow API
+  description: API Gateway that allow client to get current market flow of companies
+  termsOfService: terms
+  contact:
+    name: vyach sellathurai
+    url: 'https://github.com/vsellathurai'
+    email: vyach.sellathurai@etu.u-pec.fr
+  license:
+    name: MIT
+    url: 'http://opensource.org/licenses/MIT'
+host: fr.esipe.eight.inside.info
+basePath: /
+paths:
+  /marketflow/companies:
+    get:
+      tags: 
+      - "Market"
+      summary: get the list of all companies on the market
+      operationId: "getCurrentMarketCompany"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Company"
+  /marketflow/companies/{companyname}/fromcurrency/{fromcurrency}/tocurrency{tocurrency}:
+    get:
+      tags: 
+      - "Market Flow"
+      summary: get the market flow of selected company each minutes from the begining of the year 2017
+      operationId: "getCompanyCurrentMarketFlow"
+      produces:
+      - "application/json"
+      parameters:
+        - name: companyname
+          in: path
+          description: Company name
+          required: true
+          type: string
+        - in: path
+          name: fromcurrency
+          type: string
+          required: true
+          description: initial currency code.
+        - in: path
+          name: tocurrency
+          type: string
+          required: true
+          description: target currency code.
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/CompanyFlow"
+definitions:
+  CompanyFlow:
+    required:
+      - company
+      - idFlow
+      - date
+      - fromCurrency
+      - toCurrency
+      - value
+    properties:
+      company:
+        $ref: '#/definitions/Company'
+      idFlow:
+        type: string
+        example: 123456789
+        description: unique id of the flow
+      date:
+        type: string
+        format: date
+        example: 01/03/17 hh:mm:ss
+        description: date of the generate flow
+      fromCurrency:
+        type: string
+        example: USD
+        description: initial currency code.
+      toCurrency:
+        type: string
+        example : EUR
+        description : target currency code.
+      value:
+        type: string
+        example : 1.1791
+  Company:
+    required:
+      - name
+      - code
+      - siret
+    properties:
+      name:
+        type: string
+        example: L'Oréal
+        description: Name of the company
+      code:
+        type: string
+        example: OR
+        description: company code
+      siret:
+        type: string
+        example: 08867323421
+        description: siret number of the company
