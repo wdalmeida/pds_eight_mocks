@@ -30,7 +30,7 @@ paths:
             type: "array"
             items:
               $ref: "#/definitions/Company"
-  /marketflow/companies/{companyname}/fromcurrency/{fromcurrency}/tocurrency{tocurrency}:
+  /marketflow/companies/{companyname}/fromcurrency/{fromcurrency}/tocurrency/{tocurrency}:
     get:
       tags: 
       - "Market Flow"
@@ -101,7 +101,7 @@ definitions:
     properties:
       name:
         type: string
-        example: L'Oréal
+        example: L'Orï¿½al
         description: Name of the company
       code:
         type: string
