@@ -39,7 +39,7 @@ public class MarketflowApiController implements MarketflowApi {
         this.request = request;
     }
 
-    public List<CompanyFlow> getCompanyCurrentMarketFlow(@ApiParam(value = "Company name",required=true)
+    public List<CompanyFlow> getCompanyCurrentMarketFlow(@ApiParam(value = "Company code",required=true)
                                                                             @PathVariable("companycode") String companyCode,
                                                                          @ApiParam(value = "initial currency code.",required=true)
                                                                             @PathVariable("fromcurrency") String fromcurrency,
@@ -48,9 +48,15 @@ public class MarketflowApiController implements MarketflowApi {
 
         List<CompanyFlow> listCompanyFlow = null;
 
+
         if (companyCode.equals("OR") && fromcurrency.equals("USD") && tocurrency.equals("EUR")) {
 
-            listCompanyFlow = companyFlowService.findAll();
+            int companyId = this.getCompanyCode(companyCode);
+
+            Company currentCompany = this.companyService.findOne(companyId);
+
+            listCompanyFlow = this.companyFlowService.findCompanyFlowByCompany(currentCompany);
+
 
         }
 
