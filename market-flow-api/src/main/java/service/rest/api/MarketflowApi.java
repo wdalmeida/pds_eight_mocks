@@ -25,7 +25,7 @@ public interface MarketflowApi {
     @RequestMapping(value = "/marketflow/companies/{companyname}/fromcurrency/{fromcurrency}/tocurrency/{tocurrency}",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<List<CompanyFlow>> getCompanyCurrentMarketFlow(@ApiParam(value = "Company name",required=true) @PathVariable("companyname") String companyname, @ApiParam(value = "initial currency code.",required=true) @PathVariable("fromcurrency") String fromcurrency, @ApiParam(value = "target currency code.",required=true) @PathVariable("tocurrency") String tocurrency);
+    List<CompanyFlow> getCompanyCurrentMarketFlow(@ApiParam(value = "Company name",required=true) @PathVariable("companyname") String companyname, @ApiParam(value = "initial currency code.",required=true) @PathVariable("fromcurrency") String fromcurrency, @ApiParam(value = "target currency code.",required=true) @PathVariable("tocurrency") String tocurrency);
 
 
     @ApiOperation(value = "get the list of all companies on the market", nickname = "getCurrentMarketCompany", notes = "", response = Company.class, responseContainer = "List", tags={ "Market", })

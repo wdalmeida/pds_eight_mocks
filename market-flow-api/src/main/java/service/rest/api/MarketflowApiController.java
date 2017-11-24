@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import service.rest.service.CompanyFlowService;
 import service.rest.service.CompanyService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -30,28 +31,30 @@ public class MarketflowApiController implements MarketflowApi {
     private CompanyService companyService;
 
     @Autowired
+    private CompanyFlowService companyFlowService;
+
+    @Autowired
     public MarketflowApiController(ObjectMapper objectMapper, HttpServletRequest request) {
         this.objectMapper = objectMapper;
         this.request = request;
     }
 
-    public ResponseEntity<List<CompanyFlow>> getCompanyCurrentMarketFlow(@ApiParam(value = "Company name",required=true)
+    public List<CompanyFlow> getCompanyCurrentMarketFlow(@ApiParam(value = "Company name",required=true)
                                                                             @PathVariable("companyname") String companyname,
                                                                          @ApiParam(value = "initial currency code.",required=true)
                                                                             @PathVariable("fromcurrency") String fromcurrency,
                                                                          @ApiParam(value = "target currency code.",required=true)
                                                                             @PathVariable("tocurrency") String tocurrency) {
 
+        List<CompanyFlow> listCompanyFlow = null;
+
         if (companyname.equals("OR") && fromcurrency.equals("USD") && tocurrency.equals("EUR")) {
-            try {
-                return new ResponseEntity<List<CompanyFlow>>(objectMapper.readValue("[ {  \"date\" : \"01/03/17 hh:mm:ss\",  \"toCurrency\" : \"EUR\",  \"idFlow\" : \"123456789\",  \"company\" : {    \"code\" : \"OR\",    \"name\" : \"L'Oreal\",    \"siret\" : \"88673234219\"  },  \"fromCurrency\" : \"USD\",  \"value\" : \"1.1791\"}, {  \"date\" : \"01/03/17 hh:mm:ss\",  \"toCurrency\" : \"EUR\",  \"idFlow\" : \"123456789\",  \"company\" : {    \"code\" : \"OR\",    \"name\" : \"L'Oréal\",    \"siret\" : \"88673234219\"  },  \"fromCurrency\" : \"USD\",  \"value\" : \"1.1791\"} ]", List.class), HttpStatus.NOT_IMPLEMENTED);
-            } catch (IOException e) {
-                log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<List<CompanyFlow>>(HttpStatus.INTERNAL_SERVER_ERROR);
-            }
+
+            listCompanyFlow = companyFlowService.findAll();
+
         }
 
-        return new ResponseEntity<List<CompanyFlow>>(HttpStatus.BAD_REQUEST);
+        return listCompanyFlow;
 
 
     }

@@ -1,10 +1,16 @@
 package service.rest.dto;
 
+import java.util.Date;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
 import org.threeten.bp.LocalDate;
 import org.springframework.validation.annotation.Validated;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
@@ -14,23 +20,25 @@ import javax.validation.constraints.*;
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2017-11-21T21:59:27.635+01:00")
 
+@Entity(name = "companyflow")
 public class CompanyFlow {
-  @JsonProperty("company")
+
+  @Id
+  private int id;
+
+  @ManyToOne
   private Company company = null;
 
-  @JsonProperty("idFlow")
-  private String idFlow = null;
+  @Column(name = "date")
+  private Date date = null;
 
-  @JsonProperty("date")
-  private LocalDate date = null;
-
-  @JsonProperty("fromCurrency")
+  @Column(name = "fromCurrency")
   private String fromCurrency = null;
 
-  @JsonProperty("toCurrency")
+  @Column(name = "toCurrency")
   private String toCurrency = null;
 
-  @JsonProperty("value")
+  @Column(name = "value")
   private String value = null;
 
   public CompanyFlow company(Company company) {
@@ -55,28 +63,9 @@ public class CompanyFlow {
     this.company = company;
   }
 
-  public CompanyFlow idFlow(String idFlow) {
-    this.idFlow = idFlow;
-    return this;
-  }
-
-   /**
-   * unique id of the flow
-   * @return idFlow
-  **/
-  @ApiModelProperty(example = "123456789", required = true, value = "unique id of the flow")
-  @NotNull
 
 
-  public String getIdFlow() {
-    return idFlow;
-  }
-
-  public void setIdFlow(String idFlow) {
-    this.idFlow = idFlow;
-  }
-
-  public CompanyFlow date(LocalDate date) {
+  public CompanyFlow date(Date date) {
     this.date = date;
     return this;
   }
@@ -90,11 +79,11 @@ public class CompanyFlow {
 
   @Valid
 
-  public LocalDate getDate() {
+  public Date getDate() {
     return date;
   }
 
-  public void setDate(LocalDate date) {
+  public void setDate(Date date) {
     this.date = date;
   }
 
@@ -172,7 +161,6 @@ public class CompanyFlow {
     }
     CompanyFlow companyFlow = (CompanyFlow) o;
     return Objects.equals(this.company, companyFlow.company) &&
-        Objects.equals(this.idFlow, companyFlow.idFlow) &&
         Objects.equals(this.date, companyFlow.date) &&
         Objects.equals(this.fromCurrency, companyFlow.fromCurrency) &&
         Objects.equals(this.toCurrency, companyFlow.toCurrency) &&
@@ -181,16 +169,16 @@ public class CompanyFlow {
 
   @Override
   public int hashCode() {
-    return Objects.hash(company, idFlow, date, fromCurrency, toCurrency, value);
+    return Objects.hash(company, date, fromCurrency, toCurrency, value);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CompanyFlow {\n");
-    
+    sb.append("CompanyFlow {\n");
+
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    company: ").append(toIndentedString(company)).append("\n");
-    sb.append("    idFlow: ").append(toIndentedString(idFlow)).append("\n");
     sb.append("    date: ").append(toIndentedString(date)).append("\n");
     sb.append("    fromCurrency: ").append(toIndentedString(fromCurrency)).append("\n");
     sb.append("    toCurrency: ").append(toIndentedString(toCurrency)).append("\n");
