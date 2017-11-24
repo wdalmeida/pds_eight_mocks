@@ -40,7 +40,7 @@ public class MarketflowApiController implements MarketflowApi {
     }
 
     public List<CompanyFlow> getCompanyCurrentMarketFlow(@ApiParam(value = "Company name",required=true)
-                                                                            @PathVariable("companyname") String companyname,
+                                                                            @PathVariable("companycode") String companyCode,
                                                                          @ApiParam(value = "initial currency code.",required=true)
                                                                             @PathVariable("fromcurrency") String fromcurrency,
                                                                          @ApiParam(value = "target currency code.",required=true)
@@ -48,7 +48,7 @@ public class MarketflowApiController implements MarketflowApi {
 
         List<CompanyFlow> listCompanyFlow = null;
 
-        if (companyname.equals("OR") && fromcurrency.equals("USD") && tocurrency.equals("EUR")) {
+        if (companyCode.equals("OR") && fromcurrency.equals("USD") && tocurrency.equals("EUR")) {
 
             listCompanyFlow = companyFlowService.findAll();
 
@@ -59,7 +59,7 @@ public class MarketflowApiController implements MarketflowApi {
 
     }
 
-    public List<Company> getCurrentMarketCompany() {
+    public List<Company> getMarketCompanies() {
 
         log.debug("CONTROLLER : getCurrentMarketCompany");
 
@@ -67,6 +67,31 @@ public class MarketflowApiController implements MarketflowApi {
 
         return listCompany;
 
+
+    }
+
+
+    @Override
+    public Company getMarketCompany(@ApiParam(value = "Company code",required=true)
+                                        @PathVariable("companycode") String companyCode) {
+
+        int companyId = this.getCompanyCode(companyCode);
+
+        return companyService.findOne(companyId);
+    }
+
+
+    private int getCompanyCode(String companyName) {
+
+        int companyId = 0;
+        if (companyName.equals("OR")) {
+            companyId = 1;
+        }
+        else if (companyName.equals("GLE")) {
+            companyId = 2;
+        }
+
+        return companyId;
 
     }
 

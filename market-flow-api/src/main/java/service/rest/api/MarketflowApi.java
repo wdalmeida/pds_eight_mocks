@@ -22,18 +22,27 @@ public interface MarketflowApi {
     @ApiOperation(value = "get the market flow of selected company each minutes from the begining of the year 2017", nickname = "getCompanyCurrentMarketFlow", notes = "", response = CompanyFlow.class, responseContainer = "List", tags={ "Market Flow", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = CompanyFlow.class, responseContainer = "List") })
-    @RequestMapping(value = "/marketflow/companies/{companyname}/fromcurrency/{fromcurrency}/tocurrency/{tocurrency}",
+    @RequestMapping(value = "/marketflow/companies/{companycode}/fromcurrency/{fromcurrency}/tocurrency/{tocurrency}",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    List<CompanyFlow> getCompanyCurrentMarketFlow(@ApiParam(value = "Company name",required=true) @PathVariable("companyname") String companyname, @ApiParam(value = "initial currency code.",required=true) @PathVariable("fromcurrency") String fromcurrency, @ApiParam(value = "target currency code.",required=true) @PathVariable("tocurrency") String tocurrency);
+    List<CompanyFlow> getCompanyCurrentMarketFlow(@ApiParam(value = "Company code",required=true) @PathVariable("companycode") String companyCode, @ApiParam(value = "initial currency code.",required=true) @PathVariable("fromcurrency") String fromcurrency, @ApiParam(value = "target currency code.",required=true) @PathVariable("tocurrency") String tocurrency);
 
 
-    @ApiOperation(value = "get the list of all companies on the market", nickname = "getCurrentMarketCompany", notes = "", response = Company.class, responseContainer = "List", tags={ "Market", })
+    @ApiOperation(value = "get the list of all companies on the market", nickname = "getMarketCompanies", notes = "", response = Company.class, responseContainer = "List", tags={ "Market", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "successful operation", response = Company.class, responseContainer = "List") })
     @RequestMapping(value = "/marketflow/companies",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    List<Company> getCurrentMarketCompany();
+    List<Company> getMarketCompanies();
+
+
+    @ApiOperation(value = "get the company", nickname = "getMarketCompany", notes = "", response = Company.class, responseContainer = "List", tags={ "Market", })
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "successful operation", response = Company.class, responseContainer = "List") })
+    @RequestMapping(value = "/marketflow/companies/{companycode}",
+            produces = { "application/json" },
+            method = RequestMethod.GET)
+    Company getMarketCompany(@ApiParam(value = "Company code",required=true) @PathVariable("companycode") String companyCode);
 
 }
