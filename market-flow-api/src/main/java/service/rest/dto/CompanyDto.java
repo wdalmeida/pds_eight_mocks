@@ -34,7 +34,7 @@ public class CompanyDto   {
    * Name of the company
    * @return name
   **/
-  @ApiModelProperty(example = "L'Or�al", required = true, value = "Name of the company")
+  @ApiModelProperty(example = "L'Oreal", required = true, value = "Name of the company")
   @NotNull
 
 
@@ -76,7 +76,7 @@ public class CompanyDto   {
    * siret number of the company
    * @return siret
   **/
-  @ApiModelProperty(example = "8.867323421E9", required = true, value = "siret number of the company")
+  @ApiModelProperty(example = "88673234219", required = true, value = "siret number of the company")
   @NotNull
 
 
