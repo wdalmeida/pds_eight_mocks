@@ -1,31 +1,37 @@
 package service.rest.dto;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
+
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.validation.annotation.Validated;
-import javax.validation.Valid;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.validation.constraints.*;
 
 /**
- * CompanyDto
+ * Company
  */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2017-11-21T21:59:27.635+01:00")
 
-public class CompanyDto   {
-  @JsonProperty("name")
+@Entity(name = "company")
+public class Company {
+
+  @Id
+  private int id;
+
+  @Column(name = "name")
   private String name = null;
 
-  @JsonProperty("code")
+  @Column(name = "code")
   private String code = null;
 
-  @JsonProperty("siret")
+  @Column(name = "siret")
   private String siret = null;
 
-  public CompanyDto name(String name) {
+  public Company name(String name) {
     this.name = name;
     return this;
   }
@@ -46,7 +52,7 @@ public class CompanyDto   {
     this.name = name;
   }
 
-  public CompanyDto code(String code) {
+  public Company code(String code) {
     this.code = code;
     return this;
   }
@@ -57,8 +63,6 @@ public class CompanyDto   {
   **/
   @ApiModelProperty(example = "OR", required = true, value = "company code")
   @NotNull
-
-
   public String getCode() {
     return code;
   }
@@ -67,7 +71,17 @@ public class CompanyDto   {
     this.code = code;
   }
 
-  public CompanyDto siret(String siret) {
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
+
+
+  public Company siret(String siret) {
     this.siret = siret;
     return this;
   }
@@ -97,7 +111,7 @@ public class CompanyDto   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CompanyDto company = (CompanyDto) o;
+    Company company = (Company) o;
     return Objects.equals(this.name, company.name) &&
         Objects.equals(this.code, company.code) &&
         Objects.equals(this.siret, company.siret);
@@ -111,8 +125,9 @@ public class CompanyDto   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CompanyDto {\n");
-    
+    sb.append("Company {\n");
+
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    siret: ").append(toIndentedString(siret)).append("\n");

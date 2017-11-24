@@ -2,24 +2,21 @@ package service.rest.dto;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.threeten.bp.LocalDate;
-import service.rest.dto.CompanyDto;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * CompanyFlowDto
+ * CompanyFlow
  */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2017-11-21T21:59:27.635+01:00")
 
-public class CompanyFlowDto   {
+public class CompanyFlow {
   @JsonProperty("company")
-  private CompanyDto company = null;
+  private Company company = null;
 
   @JsonProperty("idFlow")
   private String idFlow = null;
@@ -36,7 +33,7 @@ public class CompanyFlowDto   {
   @JsonProperty("value")
   private String value = null;
 
-  public CompanyFlowDto company(CompanyDto company) {
+  public CompanyFlow company(Company company) {
     this.company = company;
     return this;
   }
@@ -50,15 +47,15 @@ public class CompanyFlowDto   {
 
   @Valid
 
-  public CompanyDto getCompany() {
+  public Company getCompany() {
     return company;
   }
 
-  public void setCompany(CompanyDto company) {
+  public void setCompany(Company company) {
     this.company = company;
   }
 
-  public CompanyFlowDto idFlow(String idFlow) {
+  public CompanyFlow idFlow(String idFlow) {
     this.idFlow = idFlow;
     return this;
   }
@@ -79,7 +76,7 @@ public class CompanyFlowDto   {
     this.idFlow = idFlow;
   }
 
-  public CompanyFlowDto date(LocalDate date) {
+  public CompanyFlow date(LocalDate date) {
     this.date = date;
     return this;
   }
@@ -101,7 +98,7 @@ public class CompanyFlowDto   {
     this.date = date;
   }
 
-  public CompanyFlowDto fromCurrency(String fromCurrency) {
+  public CompanyFlow fromCurrency(String fromCurrency) {
     this.fromCurrency = fromCurrency;
     return this;
   }
@@ -122,7 +119,7 @@ public class CompanyFlowDto   {
     this.fromCurrency = fromCurrency;
   }
 
-  public CompanyFlowDto toCurrency(String toCurrency) {
+  public CompanyFlow toCurrency(String toCurrency) {
     this.toCurrency = toCurrency;
     return this;
   }
@@ -143,7 +140,7 @@ public class CompanyFlowDto   {
     this.toCurrency = toCurrency;
   }
 
-  public CompanyFlowDto value(String value) {
+  public CompanyFlow value(String value) {
     this.value = value;
     return this;
   }
@@ -173,7 +170,7 @@ public class CompanyFlowDto   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CompanyFlowDto companyFlow = (CompanyFlowDto) o;
+    CompanyFlow companyFlow = (CompanyFlow) o;
     return Objects.equals(this.company, companyFlow.company) &&
         Objects.equals(this.idFlow, companyFlow.idFlow) &&
         Objects.equals(this.date, companyFlow.date) &&
@@ -190,7 +187,7 @@ public class CompanyFlowDto   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CompanyFlowDto {\n");
+    sb.append("class CompanyFlow {\n");
     
     sb.append("    company: ").append(toIndentedString(company)).append("\n");
     sb.append("    idFlow: ").append(toIndentedString(idFlow)).append("\n");
