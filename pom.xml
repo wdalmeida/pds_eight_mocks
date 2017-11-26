@@ -18,6 +18,7 @@
 
     <modules>
         <module>market-flow-api</module>
+        <module>bankservice</module>
     </modules>
 
     <properties>

@@ -17,7 +17,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/externalBank")
 public class RestApiController {
 
     public static final Logger logger = LoggerFactory.getLogger(RestApiController.class);
