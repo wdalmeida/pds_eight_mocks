@@ -32,6 +32,9 @@ public class CompanyFlow {
   @Column(name = "date")
   private Date date = null;
 
+  @Column(name = "hour_date")
+  private String dateHour = null;
+
   @Column(name = "fromCurrency")
   private String fromCurrency = null;
 
@@ -85,6 +88,23 @@ public class CompanyFlow {
 
   public void setDate(Date date) {
     this.date = date;
+  }
+
+
+  /**
+   * hour of the generate flow
+   * @return string
+   **/
+  @ApiModelProperty(example = "06:22:02", required = true, value = "hour of the generate flow")
+  @NotNull
+
+  @Valid
+  public String getDateHour() {
+    return dateHour;
+  }
+
+  public void setDateHour(String dateHour) {
+    this.dateHour = dateHour;
   }
 
   public CompanyFlow fromCurrency(String fromCurrency) {
