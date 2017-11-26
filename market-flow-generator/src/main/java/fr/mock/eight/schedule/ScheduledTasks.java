@@ -20,9 +20,7 @@ import java.util.Date;
 public class ScheduledTasks {
 
     private static final Logger log = LoggerFactory.getLogger(ScheduledTasks.class);
-
-    private static final SimpleDateFormat dateHourFormat = new SimpleDateFormat("HH:mm:ss");
-
+    
 
     @Autowired
     private CompanyFlowService companyFlowService;
@@ -35,18 +33,25 @@ public class ScheduledTasks {
 
     private int row = 0;
 
+    private static final int moins = -1;
+
 
     @Scheduled(fixedDelay = 60000)
     public void reportCurrentTime() {
 
         CompanyFlow companyFlow = new CompanyFlow();
+
+
         currentDate = new Date();
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+        String dateFormated = dateFormat.format(currentDate);
 
         row++;
 
         companyFlow.setId(row);
         companyFlow.setDate(currentDate);
-        companyFlow.setDateHour("22:42:22");
+        companyFlow.setDateHour(dateFormated);
         companyFlow.setFromCurrency("USD");
         companyFlow.setToCurrency("EUR");
         companyFlow.setValue("88,32");
@@ -56,7 +61,7 @@ public class ScheduledTasks {
 
 
 
-        int moins = -1;
+
 
 
 
@@ -66,32 +71,38 @@ public class ScheduledTasks {
         log.info("initial Date : "+initialDate);
         log.info("current date : "+currentDate);
 
+        if (row < 44000) {
 
-        for (int j = 0; j < 1001; j++) {
-
-
-            //set date plus 1 minutes ago
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTime(iterateDate);
-            calendar.add(Calendar.MINUTE, moins);
-
-            iterateDate = calendar.getTime();
-
-            row++;
-
-            companyFlow.setId(row);
-            companyFlow.setDate(iterateDate);
-            companyFlow.setDateHour("22:42:22");
-            companyFlow.setFromCurrency("USD");
-            companyFlow.setToCurrency("EUR");
-            companyFlow.setValue("88,32");
-            companyFlow.setCompanyId(1);
-
-            companyFlowService.insert(companyFlow);
+            for (int j = 0; j < 1001; j++) {
 
 
+                //set date plus 1 minutes ago
+                Calendar calendar = Calendar.getInstance();
+                calendar.setTime(iterateDate);
+                calendar.add(Calendar.MINUTE, moins);
+
+                dateFormated = dateFormat.format(iterateDate);
+
+                iterateDate = calendar.getTime();
+
+                row++;
+
+                companyFlow.setId(row);
+                companyFlow.setDate(iterateDate);
+                companyFlow.setDateHour(dateFormated);
+                companyFlow.setFromCurrency("USD");
+                companyFlow.setToCurrency("EUR");
+                companyFlow.setValue("88,32");
+                companyFlow.setCompanyId(1);
+
+                companyFlowService.insert(companyFlow);
+
+
+
+            }
 
         }
+
 
     }
 
