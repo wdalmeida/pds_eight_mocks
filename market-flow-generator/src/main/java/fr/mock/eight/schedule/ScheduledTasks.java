@@ -1,5 +1,6 @@
 package fr.mock.eight.schedule;
 
+import fr.mock.eight.generator.ValueGenerator;
 import fr.mock.eight.model.CompanyFlow;
 import fr.mock.eight.service.CompanyFlowService;
 import org.slf4j.Logger;
@@ -20,6 +21,10 @@ import java.util.Date;
 public class ScheduledTasks {
 
     private static final Logger log = LoggerFactory.getLogger(ScheduledTasks.class);
+
+    private double nextValue = 187.90;
+    private  double previousValue = 187.90;
+
     
 
     @Autowired
@@ -40,8 +45,6 @@ public class ScheduledTasks {
     public void reportCurrentTime() {
 
         CompanyFlow companyFlow = new CompanyFlow();
-
-
         currentDate = new Date();
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
@@ -54,16 +57,13 @@ public class ScheduledTasks {
         companyFlow.setDateHour(dateFormated);
         companyFlow.setFromCurrency("USD");
         companyFlow.setToCurrency("EUR");
-        companyFlow.setValue("88,32");
+
+        nextValue = ValueGenerator.generateMarketFlowValue(nextValue);
+
+        companyFlow.setValue(nextValue+"");
         companyFlow.setCompanyId(1);
 
         companyFlowService.insert(companyFlow);
-
-
-
-
-
-
 
         loop++;
 
@@ -92,12 +92,13 @@ public class ScheduledTasks {
                 companyFlow.setDateHour(dateFormated);
                 companyFlow.setFromCurrency("USD");
                 companyFlow.setToCurrency("EUR");
-                companyFlow.setValue("88,32");
+
+                previousValue = ValueGenerator.generateMarketFlowValue(previousValue);
+
+                companyFlow.setValue(previousValue+"");
                 companyFlow.setCompanyId(1);
 
                 companyFlowService.insert(companyFlow);
-
-
 
             }
 
