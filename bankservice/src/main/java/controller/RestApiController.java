@@ -34,8 +34,9 @@ public class RestApiController {
         try {
             //ClassLoader classLoader = getClass().getClassLoader();
             //File xsdFile = new File(classLoader.getResource("pain.001.001.02.xsd").getFile());
-            File xsdFile = xsdResource.getFile();
-            InputStream xsdStream = new FileInputStream(xsdFile);
+            //File xsdFile = xsdResource.getFile();
+            //InputStream xsdStream = new FileInputStream(xsdFile);
+            InputStream xsdStream = xsdResource.getInputStream();
 
             ByteArrayInputStream xmlFile = new ByteArrayInputStream(requestBody);
 
