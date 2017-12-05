@@ -2,6 +2,8 @@ package controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
 import org.springframework.web.bind.annotation.*;
 
 import javax.xml.XMLConstants;
@@ -13,13 +15,14 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 @RestController
 public class RestApiController {
 
     public static final Logger logger = LoggerFactory.getLogger(RestApiController.class);
+
+    @Value("classpath:pain.001.001.02.xsd")
+    private Resource xsdResource;
 
     @RequestMapping(value = "/submit/",  method = RequestMethod.POST)
     @ResponseBody
@@ -29,8 +32,9 @@ public class RestApiController {
         //Files.write(Paths.get(fileName), requestBody);
         logger.info("file received:\n" + new String(requestBody));
         try {
-            ClassLoader classLoader = getClass().getClassLoader();
-            File xsdFile = new File(classLoader.getResource("pain.001.001.02.xsd").getFile());
+            //ClassLoader classLoader = getClass().getClassLoader();
+            //File xsdFile = new File(classLoader.getResource("pain.001.001.02.xsd").getFile());
+            File xsdFile = xsdResource.getFile();
             InputStream xsdStream = new FileInputStream(xsdFile);
 
             ByteArrayInputStream xmlFile = new ByteArrayInputStream(requestBody);
