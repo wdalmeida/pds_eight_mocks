@@ -1,0 +1,4 @@
+# configuration de l'transfers.application Web avec Spring Boot
+server:
+  port: 9191
+  contextPath: /externalBank

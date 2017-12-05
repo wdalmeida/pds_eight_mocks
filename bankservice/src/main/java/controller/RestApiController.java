@@ -17,7 +17,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 @RestController
-@RequestMapping("/externalBank")
 public class RestApiController {
 
     public static final Logger logger = LoggerFactory.getLogger(RestApiController.class);
@@ -26,8 +25,9 @@ public class RestApiController {
     @ResponseBody
     public String home(@RequestBody byte[] requestBody) throws Exception {
         logger.info("submit post method called");
-        String fileName = "target.filename.xml";
+        //String fileName = "target.filename.xml";
         //Files.write(Paths.get(fileName), requestBody);
+        logger.info("file received:\n" + new String(requestBody));
         try {
             ClassLoader classLoader = getClass().getClassLoader();
             File xsdFile = new File(classLoader.getResource("pain.001.001.02.xsd").getFile());
@@ -45,7 +45,7 @@ public class RestApiController {
         catch(Exception ex)
         {
             logger.info("exception handled" + ex.getMessage());
-            return "<message>KO</message>";
+            return "<message>" + ex.getMessage() + "</message>";
         }
     }
 
