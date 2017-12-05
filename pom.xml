@@ -19,6 +19,7 @@
     <modules>
         <module>market-flow-api</module>
         <module>bankservice</module>
+        <module>market-flow-generator</module>
     </modules>
 
     <properties>
