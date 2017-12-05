@@ -15,7 +15,7 @@ import javax.sql.DataSource;
 @Repository
 public class CompanyFlowDaoImpl extends JdbcDaoSupport implements CompanyFlowDao{
 
-    @Qualifier("dataSource")
+    /*@Qualifier("dataSource")
     @Autowired
     DataSource dataSource;
 
@@ -23,7 +23,7 @@ public class CompanyFlowDaoImpl extends JdbcDaoSupport implements CompanyFlowDao
     private void initialize() {
         setDataSource(dataSource);
 
-    }
+    }*/
 
     @Override
     public void insert(CompanyFlow companyFLow) {
