@@ -32,12 +32,20 @@ public class CompanyFlowDaoImpl extends JdbcDaoSupport implements CompanyFlowDao
                 "            id, date, hour_date, from_currency, to_currency, value, company_id) " +
                 "    VALUES " +
                 "(?, ?, ?, ?, ?, ?, ?)";
+        
 
         getJdbcTemplate().update(sql, new Object[] {
            companyFLow.getId(), companyFLow.getDate(), companyFLow.getDateHour(),
                 companyFLow.getFromCurrency(), companyFLow.getToCurrency(),
                 companyFLow.getValue(), companyFLow.getCompanyId()
-        });
+        }
+
+
+
+
+        );
+
+
 
     }
 }
