@@ -28,7 +28,7 @@ public class CompanyFlowDaoImpl extends JdbcDaoSupport implements CompanyFlowDao
     @Override
     public void insert(CompanyFlow companyFLow) {
 
-        String sql = "INSERT INTO public.companyflow(" +
+        String sql = "INSERT INTO COMPANYFLOW(" +
                 "            id, date, hour_date, from_currency, to_currency, value, company_id) " +
                 "    VALUES " +
                 "(?, ?, ?, ?, ?, ?, ?)";
