@@ -10,7 +10,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @EnableScheduling
-@ComponentScan({"fr.mock.eight.Utils"})
 public class MarketFlowGeneratorApp {
 
     public static void main(String[] args) {
