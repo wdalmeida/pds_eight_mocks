@@ -19,4 +19,24 @@ public class CompanyFlowServiceImpl implements CompanyFlowService{
     public void insert(CompanyFlow companyFlow) {
         companyFlowDao.insert(companyFlow);
     }
+
+    @Override
+    public void delete(CompanyFlow companyFlow) {
+        companyFlowDao.delete(companyFlow);
+    }
+
+    @Override
+    public CompanyFlow getLastCompanyFlow() {
+
+        CompanyFlow companyFlow = companyFlowDao.getLastCompanyFlow();
+
+        return companyFlow;
+    }
+
+    @Override
+    public void deleteLastCompanyFlow() {
+
+        companyFlowDao.deleteLastCompanyFlow();
+
+    }
 }

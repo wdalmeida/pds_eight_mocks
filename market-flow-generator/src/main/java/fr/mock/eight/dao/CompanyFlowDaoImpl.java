@@ -1,9 +1,12 @@
 package fr.mock.eight.dao;
 
+import fr.mock.eight.Utils.Properties;
 import fr.mock.eight.model.CompanyFlow;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
@@ -15,29 +18,103 @@ import javax.sql.DataSource;
 @Repository
 public class CompanyFlowDaoImpl extends JdbcDaoSupport implements CompanyFlowDao{
 
-    @Qualifier("dataSource")
+    /*@Qualifier("dataSource")
     @Autowired
-    DataSource dataSource;
+    DataSource dataSource;*/
+
+    @Autowired
+    Properties properties;
 
     @PostConstruct
     private void initialize() {
+
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        dataSource.setDriverClassName(properties.getDbDriver());
+        dataSource.setUrl(properties.getDbUrl());
+        dataSource.setUsername(properties.getDbUsername());
+        dataSource.setPassword(properties.getDbPassword());
+
         setDataSource(dataSource);
 
     }
 
     @Override
-    public void insert(CompanyFlow companyFLow) {
+    public void insert(CompanyFlow companyFlow) {
 
-        String sql = "INSERT INTO public.companyflow(" +
+        String sql = "INSERT INTO COMPANYFLOW(" +
                 "            id, date, hour_date, from_currency, to_currency, value, company_id) " +
                 "    VALUES " +
                 "(?, ?, ?, ?, ?, ?, ?)";
 
+
         getJdbcTemplate().update(sql, new Object[] {
-           companyFLow.getId(), companyFLow.getDate(), companyFLow.getDateHour(),
-                companyFLow.getFromCurrency(), companyFLow.getToCurrency(),
-                companyFLow.getValue(), companyFLow.getCompanyId()
+                companyFlow.getId(), companyFlow.getDate(), companyFlow.getDateHour(),
+                companyFlow.getFromCurrency(), companyFlow.getToCurrency(),
+                companyFlow.getValue(), companyFlow.getCompanyId()
         });
 
+
     }
+
+    @Override
+    public void delete(CompanyFlow companyFlow) {
+
+        String sql = "DELETE FROM COMPANYFLOW WHERE " +
+                "id = ? " +
+                "AND date = ? " +
+                "AND hour_date = ?" +
+                "AND from_currency = ?" +
+                "AND to_currency = ? " +
+                "AND value = ?" +
+                "AND company_id = ?";
+
+
+
+        /*getJdbcTemplate().queryForObject(
+                sql,
+                new Object[] {
+                    companyFlow.getId(), companyFlow.getDate(), companyFlow.getDateHour(),
+                    companyFlow.getFromCurrency(), companyFlow.getToCurrency(),
+                    companyFlow.getValue(), companyFlow.getCompanyId()
+                },
+                new BeanPropertyRowMapper(CompanyFlow.class)
+        );*/
+
+        int result = getJdbcTemplate().update(
+                sql,
+                new Object[] {
+                        companyFlow.getId(), companyFlow.getDate(), companyFlow.getDateHour(),
+                        companyFlow.getFromCurrency(), companyFlow.getToCurrency(),
+                        companyFlow.getValue(), companyFlow.getCompanyId()
+                }
+        );
+
+        System.out.println("call delete query, result : " + result);
+
+    }
+
+    @Override
+    public CompanyFlow getLastCompanyFlow() {
+
+
+        String sql = "select * from companyflow order by date asc limit 1";
+
+
+        CompanyFlow companyFlow = (CompanyFlow)getJdbcTemplate().queryForObject(
+                sql, new Object[] {  }, new BeanPropertyRowMapper(CompanyFlow.class));
+
+
+        return companyFlow;
+    }
+
+    @Override
+    public void deleteLastCompanyFlow() {
+        String sql = "delete from companyflow where id = " +
+                "(select id from companyflow order by date asc limit 1)";
+
+        getJdbcTemplate().update(sql);
+
+    }
+
+
 }

@@ -9,5 +9,9 @@ public interface CompanyFlowDao {
 
 
     void insert(CompanyFlow companyFLow);
+    void delete (CompanyFlow companyFlow);
+
+    CompanyFlow getLastCompanyFlow();
+    void deleteLastCompanyFlow();
 
 }

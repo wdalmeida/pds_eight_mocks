@@ -9,4 +9,9 @@ public interface CompanyFlowService {
 
 
     void insert(CompanyFlow companyFlow);
+    void delete(CompanyFlow companyFlow);
+
+    CompanyFlow getLastCompanyFlow();
+
+    void deleteLastCompanyFlow();
 }

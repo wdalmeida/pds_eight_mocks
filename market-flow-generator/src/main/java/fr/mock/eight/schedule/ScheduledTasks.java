@@ -22,9 +22,14 @@ public class ScheduledTasks {
 
     private static final Logger log = LoggerFactory.getLogger(ScheduledTasks.class);
 
-    private double nextValue = 187.90;
-    private  double previousValue = 187.90;
+    private double nextValueId1 = 187.90;
+    private double previousValueId1 = 187.90;
 
+    private double nextValueId2 = 43.94;
+    private double previousValueId2 = 43.94;
+
+    private double nextValueId3 = 17.85;
+    private double previousValueId3 = 17.85;
     
 
     @Autowired
@@ -36,34 +41,74 @@ public class ScheduledTasks {
 
     private int loop = 0;
 
-    private int row = 0;
+    private int row = 1;
 
     private static final int moins = -1;
+
+    private boolean needPastGeneration = true;
+
+    private CompanyFlow lastCompanyFlowEntry;
 
 
     @Scheduled(fixedDelay = 60000)
     public void reportCurrentTime() {
 
-        CompanyFlow companyFlow = new CompanyFlow();
+        CompanyFlow companyFlow1 = new CompanyFlow();
+        CompanyFlow companyFlow2 = new CompanyFlow();
+        CompanyFlow companyFlow3 = new CompanyFlow();
         currentDate = new Date();
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
         String dateFormated = dateFormat.format(currentDate);
 
+        //generation of past value one time
+        if (needPastGeneration) {
+            this.generatePastValue(dateFormat);
+
+            needPastGeneration = false;
+        }
+
+        //generation de la valeur en cours
+        nextValueId1 = ValueGenerator.generateMarketFlowValue(nextValueId1);
+        nextValueId2 = ValueGenerator.generateMarketFlowValue(nextValueId2);
+        nextValueId3 = ValueGenerator.generateMarketFlowValue(nextValueId3);
+
+        //generation of value for current time for company id 1
+        companyFlow1.setId(row);
+        companyFlow1.setDate(currentDate);
+        companyFlow1.setDateHour(dateFormated);
+        companyFlow1.setFromCurrency("USD");
+        companyFlow1.setToCurrency("EUR");
+        companyFlow1.setValue(nextValueId1 +"");
+        companyFlow1.setCompanyId(1);
+
+        //generation of value for current time for company id 2
+        row++;
+        companyFlow2.setId(row);
+        companyFlow2.setDate(currentDate);
+        companyFlow2.setDateHour(dateFormated);
+        companyFlow2.setFromCurrency("USD");
+        companyFlow2.setToCurrency("EUR");
+        companyFlow2.setValue(nextValueId2 +"");
+        companyFlow2.setCompanyId(2);
+
+        //generation of value for current time for company id 2
+        row++;
+        companyFlow3.setId(row);
+        companyFlow3.setDate(currentDate);
+        companyFlow3.setDateHour(dateFormated);
+        companyFlow3.setFromCurrency("USD");
+        companyFlow3.setToCurrency("EUR");
+        companyFlow3.setValue(nextValueId3 +"");
+        companyFlow3.setCompanyId(3);
+
+
         row++;
 
-        companyFlow.setId(row);
-        companyFlow.setDate(currentDate);
-        companyFlow.setDateHour(dateFormated);
-        companyFlow.setFromCurrency("USD");
-        companyFlow.setToCurrency("EUR");
+        companyFlowService.insert(companyFlow1);
+        companyFlowService.insert(companyFlow2);
+        companyFlowService.insert(companyFlow3);
 
-        nextValue = ValueGenerator.generateMarketFlowValue(nextValue);
-
-        companyFlow.setValue(nextValue+"");
-        companyFlow.setCompanyId(1);
-
-        companyFlowService.insert(companyFlow);
 
         loop++;
 
@@ -71,39 +116,77 @@ public class ScheduledTasks {
         log.info("initial Date : "+initialDate);
         log.info("current date : "+currentDate);
 
-        if (row < 44000) {
 
-            for (int j = 0; j < 1001; j++) {
+        /* delete 3 last company flow entry */
+
+        companyFlowService.deleteLastCompanyFlow();
+        companyFlowService.deleteLastCompanyFlow();
+        companyFlowService.deleteLastCompanyFlow();
 
 
-                //set date plus 1 minutes ago
-                Calendar calendar = Calendar.getInstance();
-                calendar.setTime(iterateDate);
-                calendar.add(Calendar.MINUTE, moins);
+    }
 
-                dateFormated = dateFormat.format(iterateDate);
 
-                iterateDate = calendar.getTime();
 
-                row++;
+    private void generatePastValue(SimpleDateFormat dateFormat) {
 
-                companyFlow.setId(row);
-                companyFlow.setDate(iterateDate);
-                companyFlow.setDateHour(dateFormated);
-                companyFlow.setFromCurrency("USD");
-                companyFlow.setToCurrency("EUR");
+        CompanyFlow companyFlowId1 = new CompanyFlow();
+        CompanyFlow companyFlowId2 = new CompanyFlow();
+        CompanyFlow companyFlowId3 = new CompanyFlow();
 
-                previousValue = ValueGenerator.generateMarketFlowValue(previousValue);
 
-                companyFlow.setValue(previousValue+"");
-                companyFlow.setCompanyId(1);
+        //generation de de donnees sur les 60 minutes passees
+        for (int j = 0; j < 60; j++) {
 
-                companyFlowService.insert(companyFlow);
 
-            }
+            //set date plus 1 minutes ago
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(iterateDate);
+            calendar.add(Calendar.MINUTE, moins);
+
+            String dateFormated = dateFormat.format(iterateDate);
+
+            iterateDate = calendar.getTime();
+
+            previousValueId1 = ValueGenerator.generateMarketFlowValue(previousValueId1);
+            previousValueId2 = ValueGenerator.generateMarketFlowValue(previousValueId2);
+            previousValueId3 = ValueGenerator.generateMarketFlowValue(previousValueId3);
+
+
+            //mock value of id company 1
+            companyFlowId1.setId(row);
+            companyFlowId1.setDate(iterateDate);
+            companyFlowId1.setDateHour(dateFormated);
+            companyFlowId1.setFromCurrency("USD");
+            companyFlowId1.setToCurrency("EUR");
+            companyFlowId1.setValue(previousValueId1 +"");
+            companyFlowId1.setCompanyId(1);
+
+            row++;
+            companyFlowId2.setId(row);
+            companyFlowId2.setDate(iterateDate);
+            companyFlowId2.setDateHour(dateFormated);
+            companyFlowId2.setFromCurrency("USD");
+            companyFlowId2.setToCurrency("EUR");
+            companyFlowId2.setValue(previousValueId2 +"");
+            companyFlowId2.setCompanyId(2);
+
+            row++;
+            companyFlowId3.setId(row);
+            companyFlowId3.setDate(iterateDate);
+            companyFlowId3.setDateHour(dateFormated);
+            companyFlowId3.setFromCurrency("USD");
+            companyFlowId3.setToCurrency("EUR");
+            companyFlowId3.setValue(previousValueId3 +"");
+            companyFlowId3.setCompanyId(3);
+
+            row++;
+
+            companyFlowService.insert(companyFlowId1);
+            companyFlowService.insert(companyFlowId2);
+            companyFlowService.insert(companyFlowId3);
 
         }
-
 
     }
 
