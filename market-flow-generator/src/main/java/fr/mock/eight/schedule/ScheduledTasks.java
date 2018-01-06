@@ -47,6 +47,8 @@ public class ScheduledTasks {
 
     private boolean needPastGeneration = true;
 
+    private CompanyFlow lastCompanyFlowEntry;
+
 
     @Scheduled(fixedDelay = 60000)
     public void reportCurrentTime() {
@@ -114,6 +116,12 @@ public class ScheduledTasks {
         log.info("initial Date : "+initialDate);
         log.info("current date : "+currentDate);
 
+
+        /* delete 3 last company flow entry */
+
+        companyFlowService.deleteLastCompanyFlow();
+        companyFlowService.deleteLastCompanyFlow();
+        companyFlowService.deleteLastCompanyFlow();
 
 
     }
