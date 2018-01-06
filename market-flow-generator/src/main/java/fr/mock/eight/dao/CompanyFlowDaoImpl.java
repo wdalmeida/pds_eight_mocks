@@ -31,13 +31,13 @@ public class CompanyFlowDaoImpl extends JdbcDaoSupport implements CompanyFlowDao
     @PostConstruct
     private void initialize() {
 
-        Properties properties = new Properties();
+        //Properties properties = new Properties();
 
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(properties.getDbDriver());
-        dataSource.setUrl(properties.getDbUrl());
-        dataSource.setUsername(properties.getDbUsername());
-        dataSource.setPassword(properties.getDbPassword());
+        dataSource.setDriverClassName("org.postgresql.Driver");
+        dataSource.setUrl("jdbc:postgresql://10.10.1.5:5432/marketapimock");
+        dataSource.setUsername("postgres");
+        dataSource.setPassword("postgres");
 
 
         setDataSource(dataSource);
