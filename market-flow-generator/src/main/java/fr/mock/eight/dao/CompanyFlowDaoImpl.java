@@ -4,6 +4,7 @@ import fr.mock.eight.Utils.Properties;
 import fr.mock.eight.model.CompanyFlow;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -22,17 +23,28 @@ public class CompanyFlowDaoImpl extends JdbcDaoSupport implements CompanyFlowDao
     @Autowired
     DataSource dataSource;*/
 
+    /*@Autowired
+    Properties properties;*/
+
     @Autowired
-    Properties properties;
+    Environment properties;
+
+
 
     @PostConstruct
     private void initialize() {
 
+
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(properties.getDbDriver());
+        /*dataSource.setDriverClassName(properties.getDbDriver());
         dataSource.setUrl(properties.getDbUrl());
         dataSource.setUsername(properties.getDbUsername());
         dataSource.setPassword(properties.getDbPassword());
+        */
+        dataSource.setDriverClassName(properties.getProperty("custom.db.driver"));
+        dataSource.setUrl(properties.getProperty("custom.db.url"));
+        dataSource.setUsername(properties.getProperty("custom.db.username"));
+        dataSource.setPassword(properties.getProperty("custom.db.password"));
 
         setDataSource(dataSource);
 
