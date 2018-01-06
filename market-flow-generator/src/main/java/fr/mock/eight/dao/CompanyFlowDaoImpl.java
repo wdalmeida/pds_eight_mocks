@@ -23,28 +23,22 @@ public class CompanyFlowDaoImpl extends JdbcDaoSupport implements CompanyFlowDao
     @Autowired
     DataSource dataSource;*/
 
-    /*@Autowired
-    Properties properties;*/
 
-    @Autowired
-    Environment properties;
+
 
 
 
     @PostConstruct
     private void initialize() {
 
+        Properties properties = new Properties();
 
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        /*dataSource.setDriverClassName(properties.getDbDriver());
+        dataSource.setDriverClassName(properties.getDbDriver());
         dataSource.setUrl(properties.getDbUrl());
         dataSource.setUsername(properties.getDbUsername());
         dataSource.setPassword(properties.getDbPassword());
-        */
-        dataSource.setDriverClassName(properties.getProperty("custom.db.driver"));
-        dataSource.setUrl(properties.getProperty("custom.db.url"));
-        dataSource.setUsername(properties.getProperty("custom.db.username"));
-        dataSource.setPassword(properties.getProperty("custom.db.password"));
+
 
         setDataSource(dataSource);
 
