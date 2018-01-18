@@ -113,6 +113,9 @@ public class MarketflowApiController implements MarketflowApi {
         else if (companyName.equals("GLE")) {
             companyId = 2;
         }
+        else if (companyName.equals("CA")) {
+            companyId = 3;
+        }
 
         return companyId;
 
