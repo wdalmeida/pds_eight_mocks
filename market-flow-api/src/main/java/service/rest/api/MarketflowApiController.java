@@ -55,7 +55,7 @@ public class MarketflowApiController implements MarketflowApi {
         List<CompanyFlow> listCompanyFlow = null;
         List<CompanyFlow> finalListCompanyFlow = new ArrayList<CompanyFlow>();
 
-        if (companyCode.equals("OR") && fromcurrency.equals("USD") && tocurrency.equals("EUR")) {
+        if (fromcurrency.equals("USD") && tocurrency.equals("EUR")) {
 
             int companyId = this.getCompanyCode(companyCode);
 
