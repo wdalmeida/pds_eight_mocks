@@ -4,6 +4,7 @@ import fr.mock.eight.Utils.Properties;
 import fr.mock.eight.model.CompanyFlow;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -22,17 +23,22 @@ public class CompanyFlowDaoImpl extends JdbcDaoSupport implements CompanyFlowDao
     @Autowired
     DataSource dataSource;*/
 
-    @Autowired
-    Properties properties;
+
+
+
+
 
     @PostConstruct
     private void initialize() {
 
+        //Properties properties = new Properties();
+
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(properties.getDbDriver());
-        dataSource.setUrl(properties.getDbUrl());
-        dataSource.setUsername(properties.getDbUsername());
-        dataSource.setPassword(properties.getDbPassword());
+        dataSource.setDriverClassName("org.postgresql.Driver");
+        dataSource.setUrl("jdbc:postgresql://10.10.1.5:5432/marketapimock");
+        dataSource.setUsername("postgres");
+        dataSource.setPassword("postgres");
+
 
         setDataSource(dataSource);
 
