@@ -15,8 +15,13 @@ public class Options {
     @Value("${gen.file.name}")
     private String fileName;
 
+    @Value("${gen.test_file.name}")
+    private String testFileName;
+
     public int getProfilsNombre() { return this.profilsNombre; }
 
     public String getFileName() { return this.fileName; }
+
+    public String getTestFileName() { return this.testFileName; }
 
 }

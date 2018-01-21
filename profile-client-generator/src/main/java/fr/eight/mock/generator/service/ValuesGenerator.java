@@ -276,4 +276,103 @@ public class ValuesGenerator {
         return revenue;
     }
 
+    /**
+     *
+     * @param historyLoan
+     * @param currentLoan
+     * @param socialCat
+     * @param revenue
+     * @param familyStatus
+     * @param childs
+     * @param isOwner
+     * @return new credit or not
+     */
+    public static int generateFuturLoan(int historyLoan, int currentLoan, int socialCat, int revenue, int familyStatus, int childs, int isOwner) {
+
+        int futurLoan = 0;
+
+        //if 2 follow loans
+        if (historyLoan > 0 && currentLoan > 0) {
+            futurLoan = 0;
+        }
+        else {
+            //sans emploi
+            if (socialCat == 1) {
+                futurLoan = 0;
+            }
+            //etudiant
+            else if (socialCat == 2) {
+                if (revenue > 2000) {
+                    futurLoan = 1;
+                }
+                else if (revenue > 1500 && childs == 0 && (familyStatus == 2 || familyStatus == 4)) {
+                    futurLoan = 1;
+                }
+                else {
+                    futurLoan = 0;
+                }
+            }
+            //employe
+            else if (socialCat == 3) {
+                if (revenue > 2000) {
+                    futurLoan = 1;
+                }
+                else if (revenue > 1800 && isOwner == 1 && (familyStatus == 2 || familyStatus == 4)) {
+                    futurLoan = 1;
+                }
+                else if (revenue > 1400 && isOwner == 1 && childs <= 3 && (familyStatus == 2 || familyStatus == 4)) {
+                    futurLoan = 1;
+                }
+                else {
+                    futurLoan = 0;
+                }
+            }
+            //ouvrier
+            else if (socialCat == 4) {
+                if (revenue > 2000) {
+                    futurLoan = 1;
+                }
+                else if (revenue > 1800 && isOwner == 1) {
+                    futurLoan = 1;
+                }
+                else if (revenue > 1500 && isOwner == 1 && childs <= 2) {
+                    futurLoan = 1;
+                }
+                else {
+                    futurLoan = 0;
+                }
+
+            }
+            //cadre
+            else if (socialCat == 5) {
+                if (revenue > 2000) {
+                    futurLoan = 1;
+                }
+                else if(revenue > 1700 && childs <= 3) {
+                    futurLoan = 1;
+                }
+                else {
+                    futurLoan = 0;
+                }
+            }
+            //retraite
+            else if (socialCat == 6) {
+                if (revenue > 2000) {
+                    futurLoan = 1;
+                }
+                else if(revenue > 1500 && isOwner == 1) {
+                    futurLoan = 1;
+                }
+                else {
+                    futurLoan = 0;
+                }
+            }
+
+        }
+
+
+
+        return futurLoan;
+    }
+
 }
