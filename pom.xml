@@ -20,6 +20,7 @@
         <module>market-flow-api</module>
         <module>bankservice</module>
         <module>market-flow-generator</module>
+        <module>profile-client-generator</module>
     </modules>
 
     <properties>
