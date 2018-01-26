@@ -5,10 +5,8 @@ import org.springframework.boot.stockmarketgenb.model.Flows;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
-import org.springframework.stereotype.Repository;
 
 
-//@Repository
 public class FlowDaoImpl extends JdbcDaoSupport implements FlowDao {
 
 
@@ -91,7 +89,7 @@ public class FlowDaoImpl extends JdbcDaoSupport implements FlowDao {
     @Override
     public void deleteLastFlow() {
         String sql = "delete from flows where id = " +
-                "(select id from flow order by date asc limit 1)";
+                "(select id from flows order by date asc limit 1)";
 
         jdbc.update(sql);
 
