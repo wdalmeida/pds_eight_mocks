@@ -67,8 +67,8 @@ definitions:
       - company
       - idFlow
       - date
-      - fromCurrency
-      - toCurrency
+      - nameCompany
+      - codeCompany
       - value
     properties:
       company:
@@ -82,11 +82,11 @@ definitions:
         format: date
         example: 01/03/17 hh:mm:ss
         description: date of the generate flow
-      fromCurrency:
+      nameCompany:
         type: string
         example: USD
         description: initial currency code.
-      toCurrency:
+      codeCompany:
         type: string
         example : EUR
         description : target currency code.
