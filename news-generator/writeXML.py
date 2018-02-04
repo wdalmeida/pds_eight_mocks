@@ -4,6 +4,8 @@ import os
 import datetime
 from subprocess import call
 
+from messaging import kafkaConsumer
+
 
 def create_xml_header():
     f = open("header.xml", "w+" )
@@ -31,13 +33,13 @@ def createXMLFooter():
     f.close()
 
 
-def createXMLItem():
+def createXMLItem(item):
     f = open("item.xml", "w+", )
     f.write('  <item>\r\n')
-    f.write('    <title>Seconde Ones</title>\r\n')
-    f.write('    <link>https://www.google.com/</link>\r\n')
-    f.write('    <description>New RSS tutorial on W3Schools</description>\r\n')
-    f.write('    <enclosure url="https://www.w3schools.com/xml/rss.mp3"/>\r\n')
+    f.write('    <title>'+item['title']+'</title>\r\n')
+    f.write('    <link>'+item['link']+'</link>\r\n')
+    f.write('    <description>'+item['description']+'</description>\r\n')
+    f.write('    <enclosure url="'+item['imgLink']+'"/>\r\n')
     f.write('    <pubDate>'+datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')+'</pubDate>\r\n')
     f.write('  </item>\r\n')
 
@@ -53,7 +55,7 @@ def createXMLFeed():
 def main():
     create_xml_header()
     createXMLFooter()
-    createXMLItem()
+    createXMLItem(kafkaConsumer.get_item_data())
     createXMLBody()
     createXMLFeed()
 
