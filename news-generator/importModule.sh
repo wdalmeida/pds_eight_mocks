@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-python3.5 -m pip install Faker kafka urllib
+python3.5 -m pip install Faker kafka
