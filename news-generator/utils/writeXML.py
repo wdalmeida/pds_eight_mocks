@@ -11,7 +11,7 @@ def create_xml_header():
     f.write('<rss version="2.0">\r\n')
     f.write('<channel>\r\n')
     f.write('  <title>BEM Finance</title>\r\n')
-    f.write('  <link>http://prod.eight.inside.esiag.info</link>\r\n')
+    f.write('  <link>http://rss.eight.inside.esiag.info</link>\r\n')
     f.write('  <description>Informations sur l\'écomomie et la finance</description>\r\n')
 
 

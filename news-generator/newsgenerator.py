@@ -3,18 +3,21 @@ from faker import Faker
 import urllib.request, json, random, socket
 from bean.rssfeed import RSSFeed
 from utils import kafkaProducer
+from subprocess import call
+import os
 
 
 def main():
+    create_news_folder()
     title= fake.text(40)
     description = fake.text(140)
     text= []
     for y in range(10):
      text.append(fake.text(1000))
     date= datetime.now().strftime('%Y-%m-%d%H%M%S%f')
-    link= "http://"+socket.gethostbyname(socket.gethostname()) +"/news"+date+".html"
+    link= "http://rss.eight.inside.esiag.info/news"+date+".html"
     print(date)
-    f= open("news%s.html" % (date),"w+")
+    f= open("news/news%s.html" % (date),"w+")
     f.write("<!DOCTYPE html>\r\n<html>\r\n<body>")
     f.write("<h1>%s</h1>\r\n" % (title))
     img=getrandomimage("https://pixabay.com/api/?key=7556704-e5037c27e687e614ba637565b&q=finance+bank&image_type=photo")
@@ -34,6 +37,11 @@ def getrandomimage(url):
       print(random.randrange(rand))
       img=data["hits"][random.randrange(rand)]["webformatURL"]
     return img
+
+
+def create_news_folder():
+    if not os.path.isdir("./news"):
+        call(["mkdir","news"])
 
 
 def sendItemToFeed(title,link,description,imgLink):
