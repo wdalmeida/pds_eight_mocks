@@ -52,13 +52,9 @@ def createXMLFeed():
         os.system("cat header.xml body.xml footer.xml > rss.xml")
 
 
-def main():
+def create(item):
     create_xml_header()
     createXMLFooter()
-    createXMLItem(kafkaConsumer.get_item_data())
+    createXMLItem(item)
     createXMLBody()
     createXMLFeed()
-
-
-if __name__ == "__main__":
-    main()
