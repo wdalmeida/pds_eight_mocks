@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-pip install Faker kafka json datetime urllib.request random socket os subprocess
+python3.5 -m pip install Faker kafka urllib
