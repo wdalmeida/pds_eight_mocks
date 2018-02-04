@@ -1,13 +1,13 @@
 package service.rest.api;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-import service.rest.dto.Flows;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.swagger.annotations.*;
+import io.swagger.annotations.ApiParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import service.rest.metier.CodeCompany;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
+import service.rest.dto.Flows;
 import service.rest.repository.IFlowsRepository;
 import service.rest.service.FlowsService;
 
@@ -53,24 +53,18 @@ public class MarketflowApiController implements MarketflowApi {
         //if (CodeCompany.contains(companyCode)) {
 
 
-            listCompanyFlows = flowsRepo.findByCompanyByOrderByDateDesc();
+        listCompanyFlows = flowsRepo.findByCompanyByOrderByDateDesc();
 
 
-            for(int i = 0; i < listCompanyFlows.size(); i++) {
+        for(int i = 0; i < listCompanyFlows.size(); i++) {
 
-                log.info("company flow no" + i + " is : " + listCompanyFlows.get(i));
+            log.info("company flow no" + i + " is : " + listCompanyFlows.get(i));
 
-                if (listCompanyFlows.get(i).getCodeCompany().equals(companyCode)) {
-                    finalListCompanyFlow.add(listCompanyFlows.get(i));
-                }
+            if (listCompanyFlows.get(i).getCodeCompany().equals(companyCode)) {
+                finalListCompanyFlow.add(listCompanyFlows.get(i));
             }
-
-        //}
-
+        }
         return finalListCompanyFlow;
 
-
     }
-
-
 }
