@@ -1,8 +1,8 @@
 from datetime import datetime
 from faker import Faker
 import urllib.request, json, random, socket
-from generator.rssfeed import RSSFeed
-from messaging import kafkaProducer
+from bean.rssfeed import RSSFeed
+from utils import kafkaProducer
 
 
 def main():

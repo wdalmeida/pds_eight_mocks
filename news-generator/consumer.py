@@ -1,7 +1,7 @@
 from kafka import KafkaConsumer
 import json
 
-import writeXML
+from utils import writeXML
 
 consumer = KafkaConsumer('news',
                              group_id='rssConsumer',

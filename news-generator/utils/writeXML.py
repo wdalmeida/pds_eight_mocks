@@ -4,8 +4,6 @@ import os
 import datetime
 from subprocess import call
 
-from messaging import kafkaConsumer
-
 
 def create_xml_header():
     f = open("header.xml", "w+" )
