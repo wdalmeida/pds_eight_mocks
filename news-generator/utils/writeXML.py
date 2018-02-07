@@ -47,7 +47,7 @@ def createXMLFeed():
         print("Writing rss file")
         if os.path.isfile("rss.xml"):
             call(["mv","rss.xml","rss_old.xml"])
-        os.system("cat header.xml body.xml footer.xml > rss.xml")
+        os.system("cat header.xml body.xml footer.xml > /var/www/html/rss.xml")
 
 
 def create(item):
