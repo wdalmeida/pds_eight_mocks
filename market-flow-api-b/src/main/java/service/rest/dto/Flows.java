@@ -17,7 +17,7 @@ public class Flows {
   @Column(name = "date")
   private Date date;
 
-  @Column(name = "date_hour")
+  @Column(name = "hour_date")
   private String dateHour;
 
   @Column(name = "value")
