@@ -1,8 +1,5 @@
 package service.rest.dto;
 
-import java.util.Date;
-import java.util.Objects;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -20,7 +17,7 @@ public class Flows {
   @Column(name = "date")
   private Date date;
 
-  @Column(name = "hour_date")
+  @Column(name = "date_hour")
   private String dateHour;
 
   @Column(name = "value")
