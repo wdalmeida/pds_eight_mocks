@@ -2,14 +2,14 @@ package service.rest.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import service.rest.dto.Company;
-import service.rest.dto.CompanyFlow;
+import service.rest.dto.Flows;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import service.rest.repository.ICompanyFlowRepository;
-import service.rest.service.CompanyService;
+import service.rest.metier.CodeCompany;
+import service.rest.repository.IFlowsRepository;
+import service.rest.service.FlowsService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -26,13 +26,13 @@ public class MarketflowApiController implements MarketflowApi {
     private final HttpServletRequest request;
 
     @Autowired
-    private CompanyService companyService;
+    private FlowsService companyService;
 
     //@Autowired
     //private FlowsService companyFlowService;
 
     @Autowired
-    private ICompanyFlowRepository companyFlowRepo;
+    private IFlowsRepository flowsRepo;
 
     @Autowired
     public MarketflowApiController(ObjectMapper objectMapper, HttpServletRequest request) {
@@ -40,35 +40,26 @@ public class MarketflowApiController implements MarketflowApi {
         this.request = request;
     }
 
-    public List<CompanyFlow> getCompanyCurrentMarketFlow(@ApiParam(value = "Company code",required=true)
-                                                                            @PathVariable("companycode") String companyCode,
-                                                                         @ApiParam(value = "initial currency code.",required=true)
-                                                                            @PathVariable("fromcurrency") String fromcurrency,
-                                                                         @ApiParam(value = "target currency code.",required=true)
-                                                                            @PathVariable("tocurrency") String tocurrency) {
+    public List<Flows> getCompanyCurrentMarketFlow(
+            @ApiParam(value = "Company code",required=true)
+            @PathVariable("companycode")
+                    String companyCode) {
 
-        List<CompanyFlow> listCompanyFlow = null;
-        List<CompanyFlow> finalListCompanyFlow = new ArrayList<CompanyFlow>();
+        List<Flows> listCompanyFlows = null;
+        List<Flows> finalListCompanyFlow = new ArrayList<Flows>();
 
-        if (fromcurrency.equals("USD") && tocurrency.equals("EUR")) {
+        //on verifie que le code envoye est traite par l'api
+        if (CodeCompany.contains(companyCode)) {
 
-            int companyId = this.getCompanyCode(companyCode);
-
-            Company currentCompany = this.companyService.findOne(companyId);
-
-            //listCompanyFlow = this.companyFlowService.findCompanyFlowByCompany(currentCompany);
-
-            listCompanyFlow = companyFlowRepo.findByCompanyByOrderByDateDesc();
+            listCompanyFlows = flowsRepo.findByCompanyByOrderByDateDesc();
 
 
-            for(int i = 0; i < listCompanyFlow.size(); i++) {
+            for(int i = 0; i < listCompanyFlows.size(); i++) {
 
-                if (currentCompany.equals(listCompanyFlow.get(i).getCompany())) {
-                    finalListCompanyFlow.add(listCompanyFlow.get(i));
+                if (listCompanyFlows.get(i).getCodeCompany().equals(companyCode)) {
+                    finalListCompanyFlow.add(listCompanyFlows.get(i));
                 }
             }
-
-
 
         }
 
@@ -77,43 +68,5 @@ public class MarketflowApiController implements MarketflowApi {
 
     }
 
-    public List<Company> getMarketCompanies() {
-
-        log.debug("CONTROLLER : getCurrentMarketCompany");
-
-        List<Company> listCompany = companyService.findAll();
-
-        return listCompany;
-
-
-    }
-
-
-    @Override
-    public Company getMarketCompany(@ApiParam(value = "Company code",required=true)
-                                        @PathVariable("companycode") String companyCode) {
-
-        int companyId = this.getCompanyCode(companyCode);
-
-        return companyService.findOne(companyId);
-    }
-
-
-    private int getCompanyCode(String companyName) {
-
-        int companyId = 0;
-        if (companyName.equals("OR")) {
-            companyId = 1;
-        }
-        else if (companyName.equals("GLE")) {
-            companyId = 2;
-        }
-        else if (companyName.equals("CA")) {
-            companyId = 3;
-        }
-
-        return companyId;
-
-    }
 
 }

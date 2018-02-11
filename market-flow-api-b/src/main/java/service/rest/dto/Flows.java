@@ -1,25 +1,35 @@
 package service.rest.dto;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Date;
 import java.util.Objects;
 
+@Entity(name = "flows")
 public class Flows {
 
   private static final long serialVersionUID = 1L;
 
-
+  @Id
   private int id;
 
+  @Column(name = "date")
   private Date date;
 
+  @Column(name = "date_hour")
   private String dateHour;
 
+  @Column(name = "value")
   private String value;
 
+  @Column(name = "name_company")
   private String nameCompany;
 
+  @Column(name = "code_company")
   private String codeCompany;
 
+  @Column(name = "siret_company")
   private String siretCompany;
 
   public String getSiretCompany() {
@@ -142,6 +152,7 @@ public class Flows {
     sb.append("    nameCompany: ").append(toIndentedString(nameCompany)).append("\n");
     sb.append("    codeCompany: ").append(toIndentedString(codeCompany)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("    siretCompany: ").append(toIndentedString(siretCompany)).append("\n");
     sb.append("}");
     return sb.toString();
   }
