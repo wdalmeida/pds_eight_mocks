@@ -22,6 +22,7 @@ public enum CodeCompany {
     public static boolean contains(String codeCompany) {
 
         for(CodeCompany code : CodeCompany.values()) {
+
             if (code.equals(codeCompany)) {
                 return true;
             }

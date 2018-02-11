@@ -48,20 +48,24 @@ public class MarketflowApiController implements MarketflowApi {
         List<Flows> listCompanyFlows = null;
         List<Flows> finalListCompanyFlow = new ArrayList<Flows>();
 
+        log.info("company code : " + companyCode);
         //on verifie que le code envoye est traite par l'api
-        if (CodeCompany.contains(companyCode)) {
+        //if (CodeCompany.contains(companyCode)) {
+
 
             listCompanyFlows = flowsRepo.findByCompanyByOrderByDateDesc();
 
 
             for(int i = 0; i < listCompanyFlows.size(); i++) {
 
+                log.info("company flow no" + i + " is : " + listCompanyFlows.get(i));
+
                 if (listCompanyFlows.get(i).getCodeCompany().equals(companyCode)) {
                     finalListCompanyFlow.add(listCompanyFlows.get(i));
                 }
             }
 
-        }
+        //}
 
         return finalListCompanyFlow;
 
