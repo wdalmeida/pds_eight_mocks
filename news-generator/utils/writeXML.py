@@ -38,7 +38,7 @@ def createXMLItem(item):
     f.write('    <link>'+item['link']+'</link>\r\n')
     f.write('    <description>'+item['description']+'</description>\r\n')
     f.write('    <enclosure url="'+item['imgLink']+'"/>\r\n')
-    f.write('    <pubDate>'+datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')+'</pubDate>\r\n')
+    f.write('    <pubDate>'+item['publishedDate']+'</pubDate>\r\n')
     f.write('  </item>\r\n')
 
 
