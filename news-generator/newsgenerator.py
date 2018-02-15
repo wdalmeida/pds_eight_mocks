@@ -12,7 +12,7 @@ def main():
     for y in range(10):
      text.append(fake.text(1000))
     date= datetime.now().strftime('%Y-%m-%d%H%M%S%f')
-    ts = datetime.datetime.now().timestamp()
+    ts = int(datetime.datetime.now().timestamp())
     link= "http://rss.eight.inside.esiag.info/news/news"+date+".html"
     print(date)
     f= open("/var/www/html/news/news%s.html" % (date),"w+")
