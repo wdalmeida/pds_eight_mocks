@@ -38,8 +38,8 @@ def getrandomimage(url):
     return img
 
 
-def sendItemToFeed(title,link,description,imgLink):
-    item = RSSFeed(title,link,description,imgLink)
+def sendItemToFeed(title,link,description,imgLink,date):
+    item = RSSFeed(title,link,description,imgLink,date)
     kafkaProducer.send(item)
     print(json.dumps(item.__dict__))
 
