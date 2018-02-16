@@ -3,6 +3,7 @@ from faker import Faker
 import urllib.request, json, random, socket
 from bean.rssfeed import RSSFeed
 from utils import kafkaProducer
+import time
 
 
 def main():
@@ -12,7 +13,7 @@ def main():
     for y in range(10):
      text.append(fake.text(1000))
     date= datetime.now().strftime('%Y-%m-%d%H%M%S%f')
-    ts = datetime.datetime.now().timestamp()
+    ts = int(time.time())
     link= "http://rss.eight.inside.esiag.info/news/news"+date+".html"
     print(date)
     f= open("/var/www/html/news/news%s.html" % (date),"w+")
@@ -25,7 +26,7 @@ def main():
     f.write("<img src='https://pixabay.com/static/img/logo.svg'/>")
     f.write("</body></html>")
     f.close()
-    sendItemToFeed(title,link,description,img,ts[:9])
+    sendItemToFeed(title,link,description,img,ts)
 
 
 def getrandomimage(url):
