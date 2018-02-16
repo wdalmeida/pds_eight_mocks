@@ -12,7 +12,7 @@ def main():
     for y in range(10):
      text.append(fake.text(1000))
     date= datetime.now().strftime('%Y-%m-%d%H%M%S%f')
-    ts = int(datetime.datetime.now().timestamp())
+    ts = datetime.datetime.now().timestamp()
     link= "http://rss.eight.inside.esiag.info/news/news"+date+".html"
     print(date)
     f= open("/var/www/html/news/news%s.html" % (date),"w+")
@@ -25,7 +25,7 @@ def main():
     f.write("<img src='https://pixabay.com/static/img/logo.svg'/>")
     f.write("</body></html>")
     f.close()
-    sendItemToFeed(title,link,description,img,ts)
+    sendItemToFeed(title,link,description,img,ts[:9])
 
 
 def getrandomimage(url):
@@ -38,9 +38,9 @@ def getrandomimage(url):
 
 
 def sendItemToFeed(title,link,description,imgLink):
-  item = RSSFeed(title,link,description,imgLink)
-  kafkaProducer.send(item)
-  print(json.dumps(item.__dict__))
+    item = RSSFeed(title,link,description,imgLink)
+    kafkaProducer.send(item)
+    print(json.dumps(item.__dict__))
 
 if __name__== "__main__":
   fake = Faker('fr_Fr')
