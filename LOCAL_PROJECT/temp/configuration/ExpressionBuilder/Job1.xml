@@ -1,0 +1,10 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<expression:EMFExpression xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:expression="http:///expression.ecore" id="tMap_1=>" expression="">
+  <variables name="row2.name" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row2.cours" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row2.variation" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row2.ouverture" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row2.haut" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row2.bas" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row2.volume" value="null" talendType="id_String" nullable="true"/>
+</expression:EMFExpression>
