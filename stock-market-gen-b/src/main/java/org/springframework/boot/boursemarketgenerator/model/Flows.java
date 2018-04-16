@@ -1,4 +1,4 @@
-package org.springframework.boot.stockmarketgenb.model;
+package org.springframework.boot.boursemarketgenerator.model;
 
 import java.util.Date;
 import java.util.Objects;

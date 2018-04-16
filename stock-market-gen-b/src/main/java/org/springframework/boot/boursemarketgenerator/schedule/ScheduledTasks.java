@@ -1,11 +1,11 @@
-package org.springframework.boot.stockmarketgenb.schedule;
+package org.springframework.boot.boursemarketgenerator.schedule;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.stockmarketgenb.dao.FlowDaoImpl;
-import org.springframework.boot.stockmarketgenb.generator.ValueGenerator;
-import org.springframework.boot.stockmarketgenb.model.Flows;
+import org.springframework.boot.boursemarketgenerator.dao.FlowDaoImpl;
+import org.springframework.boot.boursemarketgenerator.generator.ValueGenerator;
+import org.springframework.boot.boursemarketgenerator.model.Flows;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;

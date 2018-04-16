@@ -1,7 +1,7 @@
-package org.springframework.boot.stockmarketgenb.dao;
+package org.springframework.boot.boursemarketgenerator.dao;
 
 
-import org.springframework.boot.stockmarketgenb.model.Flows;
+import org.springframework.boot.boursemarketgenerator.model.Flows;
 
 public interface FlowDao {
 

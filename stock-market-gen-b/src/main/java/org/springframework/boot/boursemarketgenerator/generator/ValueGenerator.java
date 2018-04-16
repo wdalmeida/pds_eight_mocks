@@ -1,4 +1,4 @@
-package org.springframework.boot.stockmarketgenb.generator;
+package org.springframework.boot.boursemarketgenerator.generator;
 
 import java.util.Random;
 

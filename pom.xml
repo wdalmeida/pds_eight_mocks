@@ -23,6 +23,7 @@
         <module>market-flow-generator</module>
         <module>profile-client-generator</module>
         <module>stock-market-gen-b</module>
+        <module>bourse-market-generator</module>
     </modules>
 
     <properties>
