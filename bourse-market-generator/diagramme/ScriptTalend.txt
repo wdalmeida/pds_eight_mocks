@@ -1,0 +1,15 @@
+cron : */2 9-17 * * mon,tue,wed,thu,fri bash ScripTalend.sh
+
+
+ScriptTalend.sh 
+
+
+#!bin/bash
+
+python Project_API.py &
+
+sleep 60s
+
+mv /home/eight/Téléchargements/datas/data.json /home/eight/Téléchargements/datas/historique/
+
+shell Job1_run.sh
