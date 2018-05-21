@@ -1,0 +1,364 @@
+{
+    "entreprise": [
+        {
+            "name": "ACCORHOTELS",
+            "cours": "45,08\u20ac",
+            "variation": "-1,55%",
+            "ouverture": "45,47\u20ac",
+            "haut": "45,77\u20ac",
+            "bas": "44,62\u20ac",
+            "volume": "772 295"
+        },
+        {
+            "name": "AIR LIQUIDE",
+            "cours": "99,62\u20ac",
+            "variation": "-0,88%",
+            "ouverture": "100,15\u20ac",
+            "haut": "100,55\u20ac",
+            "bas": "98,54\u20ac",
+            "volume": "1 286 417"
+        },
+        {
+            "name": "AIRBUS GROUP (EX-EADS)",
+            "cours": "94,63\u20ac",
+            "variation": "-0,92%",
+            "ouverture": "95,00\u20ac",
+            "haut": "95,46\u20ac",
+            "bas": "92,78\u20ac",
+            "volume": "2 307 587"
+        },
+        {
+            "name": "ARCELORMITTAL",
+            "cours": "26,17\u20ac",
+            "variation": "-3,84%",
+            "ouverture": "26,97\u20ac",
+            "haut": "27,46\u20ac",
+            "bas": "25,71\u20ac",
+            "volume": "7 237 675"
+        },
+        {
+            "name": "ATOS",
+            "cours": "110,20\u20ac",
+            "variation": "-0,59%",
+            "ouverture": "110,10\u20ac",
+            "haut": "110,80\u20ac",
+            "bas": "108,55\u20ac",
+            "volume": "392 418"
+        },
+        {
+            "name": "AXA",
+            "cours": "21,79\u20ac",
+            "variation": "-2,35%",
+            "ouverture": "22,28\u20ac",
+            "haut": "22,31\u20ac",
+            "bas": "21,46\u20ac",
+            "volume": "14 012 928"
+        },
+        {
+            "name": "BNP PARIBAS",
+            "cours": "60,11\u20ac",
+            "variation": "-1,83%",
+            "ouverture": "60,64\u20ac",
+            "haut": "61,15\u20ac",
+            "bas": "59,15\u20ac",
+            "volume": "4 860 287"
+        },
+        {
+            "name": "BOUYGUES",
+            "cours": "39,99\u20ac",
+            "variation": "-2,34%",
+            "ouverture": "40,74\u20ac",
+            "haut": "40,97\u20ac",
+            "bas": "39,75\u20ac",
+            "volume": "950 475"
+        },
+        {
+            "name": "CAPGEMINI",
+            "cours": "102,95\u20ac",
+            "variation": "-0,82%",
+            "ouverture": "103,30\u20ac",
+            "haut": "104,00\u20ac",
+            "bas": "102,25\u20ac",
+            "volume": "759 242"
+        },
+        {
+            "name": "CARREFOUR",
+            "cours": "16,94\u20ac",
+            "variation": "+0,53%",
+            "ouverture": "16,75\u20ac",
+            "haut": "16,96\u20ac",
+            "bas": "16,61\u20ac",
+            "volume": "3 610 525"
+        },
+        {
+            "name": "CREDIT AGRICOLE",
+            "cours": "13,38\u20ac",
+            "variation": "-1,51%",
+            "ouverture": "13,50\u20ac",
+            "haut": "13,62\u20ac",
+            "bas": "13,19\u20ac",
+            "volume": "9 217 233"
+        },
+        {
+            "name": "DANONE",
+            "cours": "65,05\u20ac",
+            "variation": "-1,05%",
+            "ouverture": "65,25\u20ac",
+            "haut": "65,56\u20ac",
+            "bas": "64,36\u20ac",
+            "volume": "1 792 647"
+        },
+        {
+            "name": "ENGIE (EX GDF SUEZ)",
+            "cours": "13,47\u20ac",
+            "variation": "-0,70%",
+            "ouverture": "13,48\u20ac",
+            "haut": "13,57\u20ac",
+            "bas": "13,30\u20ac",
+            "volume": "7 053 792"
+        },
+        {
+            "name": "ESSILOR INTERNATIONAL",
+            "cours": "108,55\u20ac",
+            "variation": "-1,41%",
+            "ouverture": "109,45\u20ac",
+            "haut": "110,15\u20ac",
+            "bas": "107,65\u20ac",
+            "volume": "680 471"
+        },
+        {
+            "name": "KERING (EX-PPR)",
+            "cours": "385,50\u20ac",
+            "variation": "-2,36%",
+            "ouverture": "392,80\u20ac",
+            "haut": "397,10\u20ac",
+            "bas": "381,20\u20ac",
+            "volume": "218 196"
+        },
+        {
+            "name": "LAFARGEHOLCIM",
+            "cours": "44,60\u20ac",
+            "variation": "-1,50%",
+            "ouverture": "44,85\u20ac",
+            "haut": "45,18\u20ac",
+            "bas": "44,33\u20ac",
+            "volume": "216 754"
+        },
+        {
+            "name": "LEGRAND",
+            "cours": "63,64\u20ac",
+            "variation": "-1,33%",
+            "ouverture": "64,20\u20ac",
+            "haut": "64,52\u20ac",
+            "bas": "62,88\u20ac",
+            "volume": "506 743"
+        },
+        {
+            "name": "L'OREAL",
+            "cours": "179,55\u20ac",
+            "variation": "-0,44%",
+            "ouverture": "179,20\u20ac",
+            "haut": "181,35\u20ac",
+            "bas": "177,70\u20ac",
+            "volume": "653 810"
+        },
+        {
+            "name": "LVMH",
+            "cours": "249,30\u20ac",
+            "variation": "-1,33%",
+            "ouverture": "250,40\u20ac",
+            "haut": "252,50\u20ac",
+            "bas": "246,50\u20ac",
+            "volume": "721 130"
+        },
+        {
+            "name": "MICHELIN",
+            "cours": "123,05\u20ac",
+            "variation": "-2,61%",
+            "ouverture": "125,20\u20ac",
+            "haut": "125,85\u20ac",
+            "bas": "122,35\u20ac",
+            "volume": "664 200"
+        },
+        {
+            "name": "ORANGE",
+            "cours": "13,63\u20ac",
+            "variation": "-1,27%",
+            "ouverture": "13,73\u20ac",
+            "haut": "13,83\u20ac",
+            "bas": "13,52\u20ac",
+            "volume": "8 140 822"
+        },
+        {
+            "name": "PERNOD RICARD",
+            "cours": "133,60\u20ac",
+            "variation": "+0,26%",
+            "ouverture": "132,69\u20ac",
+            "haut": "133,80\u20ac",
+            "bas": "132,30\u20ac",
+            "volume": "458 877"
+        },
+        {
+            "name": "PSA GROUPE (EX-PEUGEOT)",
+            "cours": "18,61\u20ac",
+            "variation": "-0,83%",
+            "ouverture": "18,63\u20ac",
+            "haut": "18,95\u20ac",
+            "bas": "18,34\u20ac",
+            "volume": "2 773 642"
+        },
+        {
+            "name": "PUBLICIS",
+            "cours": "55,38\u20ac",
+            "variation": "-1,95%",
+            "ouverture": "56,12\u20ac",
+            "haut": "56,34\u20ac",
+            "bas": "55,02\u20ac",
+            "volume": "909 322"
+        },
+        {
+            "name": "RENAULT",
+            "cours": "92,68\u20ac",
+            "variation": "-1,44%",
+            "ouverture": "93,10\u20ac",
+            "haut": "93,98\u20ac",
+            "bas": "91,20\u20ac",
+            "volume": "773 825"
+        },
+        {
+            "name": "SAFRAN",
+            "cours": "84,96\u20ac",
+            "variation": "-1,64%",
+            "ouverture": "85,96\u20ac",
+            "haut": "86,46\u20ac",
+            "bas": "84,06\u20ac",
+            "volume": "1 233 604"
+        },
+        {
+            "name": "SAINT-GOBAIN",
+            "cours": "43,89\u20ac",
+            "variation": "-2,47%",
+            "ouverture": "44,70\u20ac",
+            "haut": "44,86\u20ac",
+            "bas": "43,38\u20ac",
+            "volume": "2 630 647"
+        },
+        {
+            "name": "SANOFI",
+            "cours": "64,63\u20ac",
+            "variation": "-0,62%",
+            "ouverture": "64,50\u20ac",
+            "haut": "64,73\u20ac",
+            "bas": "63,84\u20ac",
+            "volume": "3 094 207"
+        },
+        {
+            "name": "SCHNEIDER ELECTRIC",
+            "cours": "70,20\u20ac",
+            "variation": "-2,90%",
+            "ouverture": "71,76\u20ac",
+            "haut": "71,86\u20ac",
+            "bas": "69,58\u20ac",
+            "volume": "1 699 668"
+        },
+        {
+            "name": "SOCIETE GENERALE",
+            "cours": "44,10\u20ac",
+            "variation": "-2,20%",
+            "ouverture": "44,68\u20ac",
+            "haut": "44,84\u20ac",
+            "bas": "43,36\u20ac",
+            "volume": "5 295 718"
+        },
+        {
+            "name": "SODEXO",
+            "cours": "99,00\u20ac",
+            "variation": "-1,00%",
+            "ouverture": "99,38\u20ac",
+            "haut": "100,10\u20ac",
+            "bas": "98,44\u20ac",
+            "volume": "391 525"
+        },
+        {
+            "name": "SOLVAY",
+            "cours": "114,30\u20ac",
+            "variation": "-1,85%",
+            "ouverture": "116,05\u20ac",
+            "haut": "116,15\u20ac",
+            "bas": "113,20\u20ac",
+            "volume": "402 598"
+        },
+        {
+            "name": "STMICROELECTRONICS",
+            "cours": "19,41\u20ac",
+            "variation": "-4,57%",
+            "ouverture": "20,10\u20ac",
+            "haut": "20,11\u20ac",
+            "bas": "19,12\u20ac",
+            "volume": "3 368 803"
+        },
+        {
+            "name": "TECHNIPFMC",
+            "cours": "24,11\u20ac",
+            "variation": "-3,75%",
+            "ouverture": "24,75\u20ac",
+            "haut": "24,79\u20ac",
+            "bas": "23,86\u20ac",
+            "volume": "1 323 967"
+        },
+        {
+            "name": "TOTAL",
+            "cours": "46,25\u20ac",
+            "variation": "-0,64%",
+            "ouverture": "46,31\u20ac",
+            "haut": "46,63\u20ac",
+            "bas": "45,80\u20ac",
+            "volume": "7 645 861"
+        },
+        {
+            "name": "UNIBAIL-RODAMCO",
+            "cours": "189,70\u20ac",
+            "variation": "-0,16%",
+            "ouverture": "189,05\u20ac",
+            "haut": "190,40\u20ac",
+            "bas": "187,75\u20ac",
+            "volume": "487 500"
+        },
+        {
+            "name": "VALEO",
+            "cours": "55,66\u20ac",
+            "variation": "-0,22%",
+            "ouverture": "55,38\u20ac",
+            "haut": "55,72\u20ac",
+            "bas": "54,76\u20ac",
+            "volume": "999 530"
+        },
+        {
+            "name": "VEOLIA ENVIRONNEMENT",
+            "cours": "18,82\u20ac",
+            "variation": "-1,21%",
+            "ouverture": "19,04\u20ac",
+            "haut": "19,13\u20ac",
+            "bas": "18,69\u20ac",
+            "volume": "1 617 922"
+        },
+        {
+            "name": "VINCI",
+            "cours": "79,26\u20ac",
+            "variation": "-1,37%",
+            "ouverture": "80,00\u20ac",
+            "haut": "80,40\u20ac",
+            "bas": "78,73\u20ac",
+            "volume": "1 412 669"
+        },
+        {
+            "name": "VIVENDI",
+            "cours": "21,14\u20ac",
+            "variation": "-1,90%",
+            "ouverture": "21,41\u20ac",
+            "haut": "21,47\u20ac",
+            "bas": "20,83\u20ac",
+            "volume": "4 948 754"
+        }
+    ]
+}
